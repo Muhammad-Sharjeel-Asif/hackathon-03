@@ -1,51 +1,42 @@
-import Link from 'next/link';
-import BgPic from '../Components/BgPic';
+import Link from "next/link";
+import BgPic from "../Components/BgPic";
 import Image from "next/image";
-import Pagination from '../Components/ShopComponents/Pagination';
-import Header from "../Components/Header"
+import Pagination from "../Components/ShopComponents/Pagination";
+import Header from "../Components/Header";
 import { fetchProduct } from "@/sanity/utils";
-import { urlFor } from '@/sanity/lib/image';
-import StateContext from '../context/StateContext';
+import { urlFor } from "@/sanity/lib/image";
+import StateContext from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
-import Sidebar from '../Components/ShopComponents/Sidebar';
+import Sidebar from "../Components/ShopComponents/Sidebar";
 
-export default async function ShopList() {
+export default async function ShopList({ searchParams }: { searchParams: { query?: string } }) {
+    const searchQuery = searchParams.query || "";
     const productData = await fetchProduct();
+
+    const filteredProducts = productData.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <StateContext>
             <Toaster />
             <Header />
             <section className="bg-white font-sans text-[#333333]">
 
-                <BgPic PageHeading='Our Shop' PageName='Shop' />
+                <BgPic PageHeading="Search Results" PageName="Search" />
 
                 <div className="bg-white min-h-screen px-24 py-20 gap-x-8 text-[#333333]">
-                    {/* Container */}
                     <div className="container mx-auto px-4 py-6">
-                        {/* Header */}
-                        <div className="flex justify-between items-center mb-6">
-                            <div className="flex items-center space-x-4">
-                                <label className="text-xl">Sort By :</label>
-                                <select className="border border-[#E0E0E0] min-w-[236px] rounded-md px-3 py-1 text-[#BDBDBD] text-[18px]">
-                                    <option>Newest</option>
-                                    <option>Oldest</option>
-                                </select>
+                        <h2 className="text-2xl font-bold mb-4">
+                            Showing results for: <span className="text-orange-500">"{searchQuery}"</span>
+                        </h2>
 
-                                <label className="text-xl">Show :</label>
-                                <select className="border border-[#E0E0E0] min-w-[236px] rounded-md px-3 py-1 text-[#BDBDBD] text-[18px]">
-                                    <option>Default</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        {/* Main Content */}
-                        <div className="flex gap-6">
-                            {/* Products Grid */}
-                            <div className="w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-6">
-                                {Array.from({ length: Math.ceil(12 / productData.length) }) // Repeat products
-                                    .flatMap(() => productData)
-                                    .slice(0, 12) // Limit to 12 items
-                                    .map((product, index) => (
+                        {filteredProducts.length === 0 ? (
+                            <p className="text-gray-500">No products found.</p>
+                        ) : (
+                            <div className="flex gap-6">
+                                <div className="w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {filteredProducts.map((product, index) => (
                                         <div key={index} className="overflow-hidden">
                                             <Link href={`/product/${product.slug}`} passHref>
                                                 <Image
@@ -72,18 +63,17 @@ export default async function ShopList() {
                                             </div>
                                         </div>
                                     ))}
+                                </div>
+
+                                {/* Sidebar */}
+                                <Sidebar />
                             </div>
-
-                            {/* Sidebar */}
-                            <Sidebar />
-
-                        </div>
+                        )}
                     </div>
 
                     <Pagination />
-
                 </div>
-            </section >
+            </section>
         </StateContext>
     );
 }

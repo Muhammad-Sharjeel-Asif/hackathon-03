@@ -1,9 +1,10 @@
 import React from 'react'
-import Image from 'next/image';
+// import Image from 'next/image';
 import Banner from './Banner';
 import Slider from './Slider';
 import LatestProduct from './LatestProduct';
-import Glass from "@/app/Public/MagnifyingGlass.png";
+// import Glass from "@/app/Public/MagnifyingGlass.png";
+import SideSearchBar from './SideSearchBar';
 
 const Sidebar = () => {
     return (
@@ -11,11 +12,7 @@ const Sidebar = () => {
             {/* Categories */}
             <div className="border border-[#F2F2F2] px-9 py-5 mx-auto">
                 <div className='flex'>
-                    <input
-                        type="text"
-                        placeholder="Search Product"
-                        className="bg-[#FF9F0D1A] h-[46px] w-[202px] placeholder:pl-6" />
-                    <span><Image src={Glass} alt='Glass' className='bg-[#FF9F0D] p-3 h-[46px] w-[46px]' /></span>
+                    <SideSearchBar />
                 </div>
                 <h4 className="font-bold text-xl my-4">Category</h4>
                 <ul className="space-y-1">
