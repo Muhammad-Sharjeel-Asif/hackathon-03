@@ -28,7 +28,7 @@ export default async function ShopList({ searchParams }: { searchParams: { query
                 <div className="bg-white min-h-screen px-24 py-20 gap-x-8 text-[#333333]">
                     <div className="container mx-auto px-4 py-6">
                         <h2 className="text-2xl font-bold mb-4">
-                            Showing results for: <span className="text-orange-500">"{searchQuery}"</span>
+                            Showing results for: <span className="text-[#FF9F0D] ml-1">{searchQuery}</span>
                         </h2>
 
                         {filteredProducts.length === 0 ? (
@@ -70,8 +70,7 @@ export default async function ShopList({ searchParams }: { searchParams: { query
                             </div>
                         )}
                     </div>
-
-                    <Pagination />
+                    <Pagination currentPage={1} />
                 </div>
             </section>
         </StateContext>

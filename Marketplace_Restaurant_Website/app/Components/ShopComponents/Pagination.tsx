@@ -9,9 +9,9 @@ const Pagination = ({ currentPage }: { currentPage: number }) => {
     const router = useRouter();
     const searchParams = useSearchParams();
     
-    const totalPages = 3; // Change this if you want more pages
+    const totalPages = 3;
     const goToPage = (page: number) => {
-        if (page < 1 || page > totalPages) return; // Prevent invalid page navigation
+        if (page < 1 || page > totalPages) return;
 
         const params = new URLSearchParams(searchParams.toString());
         params.set("page", page.toString());
@@ -20,7 +20,7 @@ const Pagination = ({ currentPage }: { currentPage: number }) => {
     };
 
     return (
-        <div className="flex justify-center mt-10 gap-x-3">
+        <div className="flex justify-center mt-4 gap-x-3">
             {/* Previous Button */}
             <button
                 className="flex justify-center items-center w-[50px] h-[50px] border border-[#F2F2F2] disabled:opacity-50"

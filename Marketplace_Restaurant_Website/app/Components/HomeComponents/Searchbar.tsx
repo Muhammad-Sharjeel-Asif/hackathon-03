@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Search from "@/app/Public/MagnifyingGlass.png";
-// import { useStateContext } from "@/app/context/StateContext";
-// import Cart from "../ShoppingList/Cart";
-// import Premium from '@/app/Public/Tote.png'
+
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
