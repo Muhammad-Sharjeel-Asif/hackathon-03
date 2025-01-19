@@ -8,8 +8,11 @@ import SocialSidebar from "./SocialSideBar";
 import Searchbar from './Searchbar'
 import Link from "next/link";
 import Premium from '@/app/Public/Tote.png'
+import { useStateContext } from "@/app/context/StateContext";
+import Cart from "../ShoppingList/Cart";
 
 const HeroSection = () => {
+    const { showCart, setShowCart } = useStateContext()
   return (
     <>
       <section className="md:px-[135px] flex flex-col md:flex-row md:items-center py-0 relative lg:min-h-screen items-center justify-between overflow-hidden">
@@ -32,7 +35,6 @@ const HeroSection = () => {
             <div className="h-8 flex-1 items-center">
               <div className="text-2xl h-8 font-bold text-center">Food<span className="text-[#FF9F0D]">tuck</span></div>
 
-
               <div className="flex justify-between mx-32">
                 <nav className="hidden md:flex space-x-8 h-6">
                   <div className="group relative inline-block">
@@ -47,9 +49,10 @@ const HeroSection = () => {
                   <Link href={"/ShopList"} className="font">Shop</Link>
                   <Link href={"/Contact"} className="font">Contact</Link>
                 </nav>
-                <div className="flex h-6 justify-between">
+                <div className="flex h-6 gap-x-4">
                   <Searchbar />
-                  <Image src={Premium} alt="Premium" className="ml-2" />
+                  <button onClick={() => setShowCart(true)}><Image src={Premium} alt="Premium" /> </button>
+                  {showCart && <Cart />}
                 </div>
               </div>
             </div>

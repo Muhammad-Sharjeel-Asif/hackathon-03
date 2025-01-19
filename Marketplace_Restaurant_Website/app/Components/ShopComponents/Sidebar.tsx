@@ -1,9 +1,7 @@
 import React from 'react'
-// import Image from 'next/image';
 import Banner from './Banner';
 import Slider from './Slider';
 import LatestProduct from './LatestProduct';
-// import Glass from "@/app/Public/MagnifyingGlass.png";
 import SideSearchBar from './SideSearchBar';
 
 const Sidebar = () => {
@@ -38,7 +36,7 @@ const Sidebar = () => {
                     <span className="hover:text-[#FF9F0D] underline decoration-[#F2F2F2] hover:decoration-[#FF9F0D] underline-offset-8 cursor-pointer">Our Menu</span>
                     <span className="hover:text-[#FF9F0D] underline decoration-[#F2F2F2] hover:decoration-[#FF9F0D] underline-offset-8 cursor-pointer">Pizza</span>
                     <span className="hover:text-[#FF9F0D] underline decoration-[#F2F2F2] hover:decoration-[#FF9F0D] underline-offset-8 cursor-pointer">Cup cake</span>
-                    <span className="text-[#FF9F0D] underline decoration-[#FF9F0D] underline-offset-8 cursor-pointer">Burger</span>
+                    <span className="hover:text-[#FF9F0D] underline decoration-[#F2F2F2] hover:decoration-[#FF9F0D] underline-offset-8 cursor-pointer">Burger</span>
                     <span className="hover:text-[#FF9F0D] underline decoration-[#F2F2F2] hover:decoration-[#FF9F0D] underline-offset-8 cursor-pointer">Cookies</span>
                     <span className="hover:text-[#FF9F0D] underline decoration-[#F2F2F2] hover:decoration-[#FF9F0D] underline-offset-8 cursor-pointer">Our Shop</span>
                     <span className="hover:text-[#FF9F0D] underline decoration-[#F2F2F2] hover:decoration-[#FF9F0D] underline-offset-8 col-span-2 cursor-pointer">Tandoori Chicken</span>

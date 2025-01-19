@@ -6,15 +6,14 @@ import Search from '@/app/Public/MagnifyingGlass.png'
 import User from '@/app/Public/User.png'
 import Premium from '@/app/Public/Tote.png'
 import Cart from "./ShoppingList/Cart";
-
 import { useStateContext } from '../context/StateContext'
 
 export default function Header() {
     const { showCart, setShowCart } = useStateContext()
 
     return (
-        <>
-            <header className="h-[90px] flex-wrap flex items-center" >
+        <header>
+            <div className="h-[90px] flex-wrap flex items-center" >
                 <div className="flex h-8 flex-1 justify-around items-center w-[1320px] lg:min-w-[1320px]">
                     <div className="text-2xl h-8 font-bold">
                         Food<span className="text-[#FF9F0D]">tuck</span>
@@ -35,8 +34,8 @@ export default function Header() {
                         <button onClick={() => setShowCart(true)}><Image src={Premium} alt="Premium" /> </button>
                     </div>
                 </div>
-            </header>
+            </div>
             {showCart && <Cart />}
-        </>
+        </header>
     );
 }

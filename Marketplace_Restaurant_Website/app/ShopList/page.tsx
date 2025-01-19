@@ -1,89 +1,86 @@
-import Link from 'next/link';
-import BgPic from '../Components/BgPic';
+import Link from "next/link";
+import BgPic from "../Components/BgPic";
 import Image from "next/image";
-import Pagination from '../Components/ShopComponents/Pagination';
-import Header from "../Components/Header"
+import Pagination from "../Components/ShopComponents/Pagination";
+import Header from "../Components/Header";
 import { fetchProduct } from "@/sanity/utils";
-import { urlFor } from '@/sanity/lib/image';
-import StateContext from '../context/StateContext';
+import { urlFor } from "@/sanity/lib/image";
+import StateContext from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
-import Sidebar from '../Components/ShopComponents/Sidebar';
+import Sidebar from "../Components/ShopComponents/Sidebar";
 
-export default async function ShopList() {
+export default async function ShopList({ searchParams }: { searchParams: { query?: string; page?: string } }) {
+    const searchQuery = searchParams.query || "";
+    const currentPage = parseInt(searchParams.page || "1", 10); // Get page number from URL
+
+    // Fetch products from API
     const productData = await fetchProduct();
+
+    // Reverse order on even pages
+    const orderedProducts = currentPage % 2 === 0 ? [...productData].reverse() : productData;
+
+    // Ensure we have enough products by repeating the list
+    const minProductsNeeded = 12; // Adjust this to the number of items per page
+    let displayedProducts = [...orderedProducts];
+
+    // Keep adding products until we reach the required amount
+    while (displayedProducts.length < minProductsNeeded + 3) {
+        displayedProducts = [...displayedProducts, ...orderedProducts];
+    }
+    displayedProducts = displayedProducts.slice(0, minProductsNeeded); // Ensure only the required number is shown
+
     return (
         <StateContext>
             <Toaster />
             <Header />
             <section className="bg-white font-sans text-[#333333]">
-
-                <BgPic PageHeading='Our Shop' PageName='Shop' />
-
+                <BgPic PageHeading="Search Results" PageName="Search" />
                 <div className="bg-white min-h-screen px-24 py-20 gap-x-8 text-[#333333]">
-                    {/* Container */}
                     <div className="container mx-auto px-4 py-6">
-                        {/* Header */}
-                        <div className="flex justify-between items-center mb-6">
-                            <div className="flex items-center space-x-4">
-                                <label className="text-xl">Sort By :</label>
-                                <select className="border border-[#E0E0E0] min-w-[236px] rounded-md px-3 py-1 text-[#BDBDBD] text-[18px]">
-                                    <option>Newest</option>
-                                    <option>Oldest</option>
-                                </select>
+                        <h2 className="text-2xl font-bold mb-4">
+                            Showing products - Page <span className="text-orange-500">{currentPage}</span>
+                        </h2>
 
-                                <label className="text-xl">Show :</label>
-                                <select className="border border-[#E0E0E0] min-w-[236px] rounded-md px-3 py-1 text-[#BDBDBD] text-[18px]">
-                                    <option>Default</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        {/* Main Content */}
                         <div className="flex gap-6">
-                            {/* Products Grid */}
                             <div className="w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-6">
-                                {Array.from({ length: Math.ceil(12 / productData.length) }) // Repeat products
-                                    .flatMap(() => productData)
-                                    .slice(0, 12) // Limit to 12 items
-                                    .map((product, index) => (
-                                        <div key={index} className="overflow-hidden">
-                                            <Link href={`/product/${product.slug}`} passHref>
-                                                <Image
-                                                    src={urlFor(product.image).url()}
-                                                    alt={product.name}
-                                                    width={312}
-                                                    height={267}
-                                                    className="object-cover w-full h-48"
-                                                    priority
-                                                />
-                                            </Link>
-                                            <div className="py-2">
-                                                <h3 className={`text-lg ${product.originalPrice ? "font-bold" : "font-normal"}`}>
-                                                    {product.name}
-                                                </h3>
-                                                <p className="text-[#FF9F0D] flex justify-between">
-                                                    ${product.price.toFixed(2)}
-                                                    {product.originalPrice && (
-                                                        <span className="text-[#828282] line-through">
-                                                            ${product.originalPrice.toFixed(2)}
-                                                        </span>
-                                                    )}
-                                                </p>
-                                            </div>
+                                {displayedProducts.map((product, index) => (
+                                    <div key={index} className="overflow-hidden">
+                                        <Link href={`/product/${product.slug}`} passHref>
+                                            <Image
+                                                src={urlFor(product.image).url()}
+                                                alt={product.name}
+                                                width={312}
+                                                height={267}
+                                                className="object-cover w-full h-48"
+                                                priority
+                                            />
+                                        </Link>
+                                        <div className="py-2">
+                                            <h3 className={`text-lg ${product.originalPrice ? "font-bold" : "font-normal"}`}>
+                                                {product.name}
+                                            </h3>
+                                            <p className="text-[#FF9F0D] flex justify-between">
+                                                ${product.price.toFixed(2)}
+                                                {product.originalPrice && (
+                                                    <span className="text-[#828282] line-through">
+                                                        ${product.originalPrice.toFixed(2)}
+                                                    </span>
+                                                )}
+                                            </p>
                                         </div>
-                                    ))}
+                                    </div>
+                                ))}
                             </div>
 
                             {/* Sidebar */}
                             <Sidebar />
-
                         </div>
                     </div>
 
-                    <Pagination />
-
+                    {/* Pagination Component */}
+                    <Pagination currentPage={currentPage} />
                 </div>
-            </section >
+            </section>
         </StateContext>
     );
 }
