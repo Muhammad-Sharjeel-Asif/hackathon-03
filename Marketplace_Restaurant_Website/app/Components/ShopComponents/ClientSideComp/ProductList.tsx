@@ -3,7 +3,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
-const ProductList = ({ displayedProducts }: { displayedProducts: any[] }) => {
+interface Product {
+    id: string;
+    name: string;
+    price: number;
+    originalPrice?: number;
+    image: string;
+    slug: string;
+}
+
+interface ProductListProps {
+    displayedProducts: Product[];
+}
+
+const ProductList = ({ displayedProducts }: ProductListProps) => {
     return (
         <div className="w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-6">
             {displayedProducts.map((product, index) => (

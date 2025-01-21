@@ -9,7 +9,6 @@ import { TiDeleteOutline } from 'react-icons/ti';
 import { useStateContext } from '../../context/StateContext'
 import { urlFor } from '@/sanity/lib/image';
 import Link from 'next/link';
-import toast from 'react-hot-toast';
 
 const Cart = () => {
     const cartRef = useRef<HTMLDivElement | null>(null);

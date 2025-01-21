@@ -10,14 +10,28 @@ import Sidebar from "../Sidebar";
 import Pagination from "../Pagination";
 import { useState } from "react";
 
-export default function ClientShopList({ productData }: { productData: any[] }) {
+interface Product {
+    id: string;
+    slug: string;
+    name: string;
+    price: number;
+    image: string;
+    description: string;
+    category: string;
+}
+
+interface ClientShopListProps {
+    productData: Product[];
+}
+
+export default function ClientShopList({ productData }: ClientShopListProps) {
     const searchParams = useSearchParams();
     const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
     const [sortOrder, setSortOrder] = useState("Newest");
 
     // Handle sorting based on user selection (Newest or Oldest)
-    let sortedProducts = sortOrder === "Oldest" ? [...productData].reverse() : [...productData];
+    const sortedProducts = sortOrder === "Oldest" ? [...productData].reverse() : [...productData];
 
     // Handle product ordering based on page number (reverse when page is odd)
     const orderedProducts = currentPage % 2 === 1 ? [...sortedProducts].reverse() : sortedProducts;

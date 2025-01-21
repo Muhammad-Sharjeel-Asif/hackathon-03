@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Pic01 from "./Home01.png";
 import BgPic from "./HomeBg.jpg";
