@@ -11,7 +11,7 @@ const Chef = () => {
 
         <BgPic PageHeading='Our Chef' PageName='Chef' />
 
-        < ChefSection />
+        <ChefSection />
       </div>
     </>
   );
