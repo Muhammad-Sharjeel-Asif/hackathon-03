@@ -1,24 +1,23 @@
-'use server'
-
 import React from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { fetchChefs } from "@/sanity/utils"; 
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
-export interface chefProp {
+export interface ChefProp {
   image: SanityImageSource;
   name: string;
   designation: string;
 }
 
-const ChefSection = async () => {
-  const chefData = await fetchChefs();
+interface ChefSectionProps {
+  chefData: ChefProp[];
+}
 
+const ChefSection: React.FC<ChefSectionProps> = ({ chefData }) => {
   return (
     <div className="container px-16 pb-16 mt-20 mx-auto">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
-        {chefData.map((chef: chefProp, index: number) => (
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        {chefData.map((chef, index) => (
           <div
             key={index}
             className={`rounded-lg shadow-lg bg-white flex flex-col transition-transform transform hover:scale-105 hover:shadow-xl ${
