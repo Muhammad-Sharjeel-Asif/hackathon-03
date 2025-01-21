@@ -82,9 +82,9 @@ const BlogLayout = () => {
         <Sidebar />
       </div>
 
-      <div className="pb-20">
+      {/* <div className="pb-20">
         <Pagination currentPage={1} />
-      </div>
+      </div> */}
     </div>
   );
 };
