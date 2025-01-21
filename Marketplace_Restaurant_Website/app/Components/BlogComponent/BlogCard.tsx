@@ -31,8 +31,8 @@ const BlogLayout = () => {
                   src={post.image}
                   alt={post.title}
                   className="w-full h-[520px] object-cover"
-                  // width={500}
-                  // height={300}
+                // width={500}
+                // height={300}
                 />
                 {/* Date Badge */}
                 <div className="absolute top-4 left-4 bg-[#FF9F0D] w-[59.93px] h-[60px] text-white rounded-md">
@@ -83,10 +83,8 @@ const BlogLayout = () => {
       </div>
 
       <div className="pb-20">
-        <Pagination />
+        <Pagination currentPage={1} />
       </div>
-
-
     </div>
   );
 };
