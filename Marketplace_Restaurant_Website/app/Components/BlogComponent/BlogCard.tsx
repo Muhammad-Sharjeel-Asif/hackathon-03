@@ -8,7 +8,6 @@ import Arrow from "./ArrowLineUpRight.png"
 import Calender from "./Calendar.png"
 import Chats from "./Chats.png"
 import User from "./UserCirclePlus.png"
-// import Pagination from "../ShopComponents/Pagination";
 import Sidebar from "./Sidebar";
 
 const BlogPost = [
