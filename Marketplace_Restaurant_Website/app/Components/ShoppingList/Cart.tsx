@@ -9,10 +9,37 @@ import { TiDeleteOutline } from 'react-icons/ti';
 import { useStateContext } from '../../context/StateContext'
 import { urlFor } from '@/sanity/lib/image';
 import Link from 'next/link';
+import getStripe from './getStripe';
+import a from "../../Strip/strip"
+import toast from 'react-hot-toast';
 
 const Cart = () => {
     const cartRef = useRef<HTMLDivElement | null>(null);
     const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext()
+
+    const handleCheckout = async () => {
+        const stripe = await getStripe();
+
+        const response = await fetch("/api/strip", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(cartItems),
+        });
+
+
+        if (response.status === 500) return;
+
+        const data = await response.json();
+
+        toast.loading('Redirecting...')
+
+        if (stripe) {
+            stripe.redirectToCheckout({ sessionId: data.id });
+        }
+
+    }
 
     return (
         <div ref={cartRef} className='w-screen bg-black text-black bg-opacity-50 fixed right-0 top-0 z-[100] transition-all duration-1000 ease-in-out'>
@@ -27,7 +54,7 @@ const Cart = () => {
                     <p className="m-10 text-center flex flex-col items-center justify-center">
                         <AiOutlineShopping size={150} className="" />
                         <h3 className="mt-4 text-lg font-medium">Your cart is empty</h3>
-                        <Link href="/">
+                        <Link href="/ShopList">
                             <button
                                 type="button"
                                 className="mt-6 px-4 py-2 bg-[#FF9F0D] text-white rounded"
@@ -102,7 +129,7 @@ const Cart = () => {
                             <h2 className='font-bold text-lg'>${(totalPrice + 10).toFixed(2)}</h2>
                         </div>
                         <div className='w-full m-auto'>
-                            <button className='w-full py-3 text-lg font-semibold text-white rounded-lg bg-[#FF9F0D]'>Pay Now</button>
+                            <button className='w-full py-3 text-lg font-semibold text-white rounded-lg bg-[#FF9F0D]' onClick={handleCheckout}>Pay Now</button>
                         </div>
                     </div>
                 )}

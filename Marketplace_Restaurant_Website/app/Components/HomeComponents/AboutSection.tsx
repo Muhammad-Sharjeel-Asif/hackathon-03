@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Pic01 from "./HomeAbout01.jpg"
-import Pic02 from "./HomeAbout02.jpg"
-import Pic03 from "./HomeAbout03.jpg"
-import Tick from "./Tick.png"
+import Pic01 from "./HomeAbout01.jpg";
+import Pic02 from "./HomeAbout02.jpg";
+import Pic03 from "./HomeAbout03.jpg";
+import Tick from "./Tick.png";
 
 const AboutSection = () => {
     return (
-        <section className="w-full md:max-w-[1024px] mx-2 md:mx-24 text-white pt-20 px-6 md:px-12">
+        <section className="w-full max-w-full overflow-hidden px-4 md:px-12 mx-auto text-white pt-20">
             <div className="container mx-auto grid md:grid-cols-2 gap-8">
                 {/* Text Content */}
                 <div className="grid gap-y-5">

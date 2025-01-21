@@ -72,7 +72,7 @@ export default function ShopList({
                                             <Image
                                                 src={thumbnail.src}
                                                 alt={thumbnail.alt}
-                                                className="absolute inset-0 object-cover rounded-sm border border-gray-300 cursor-pointer"
+                                                className="absolute inset-0 object-cover rounded-sm border border-gray-300 cursor-pointer hidden md:flex"
                                                 fill
                                             />
                                         </div>
@@ -80,11 +80,11 @@ export default function ShopList({
                                 </div>
 
                                 {/* Main Image on the Right */}
-                                <div className="col-span-3 relative h-full">
+                                <div className="col-span-3 relative h-full sm:h-full">
                                     <Image
                                         src={urlFor(product.image).url()}
                                         alt={product.name}
-                                        className="absolute inset-0 object-cover rounded-sm"
+                                        className="absolute inset-0 object-cover rounded-sm sm:h-full"
                                         fill
                                     />
                                 </div>
