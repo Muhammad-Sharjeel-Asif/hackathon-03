@@ -5,10 +5,10 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { fetchChefs } from "@/sanity/utils";
 import Link from "next/link";
-import { chefProp } from "../Chef_components/ChefSection";
+import { ChefProp } from "../Chef_components/ChefSection";
 
 const MeetOurChef = () => {
-  const [chefData, setChefData] = useState<chefProp[]>([]);
+  const [chefData, setChefData] = useState<ChefProp[]>([]);
 
   // Fetch chefs on component mount
   useEffect(() => {
@@ -35,7 +35,7 @@ const MeetOurChef = () => {
             className="flex gap-6 animate-scroll whitespace-nowrap"
             style={{ animation: `scroll 20s linear infinite` }}
           >
-            {chefData.map((chef: chefProp, index: number) => (
+            {chefData.map((chef: ChefProp, index: number) => (
               <div
                 key={index}
                 className="relative overflow-hidden aspect-[4/5] rounded-md shadow-lg flex-shrink-0 w-[250px]"
