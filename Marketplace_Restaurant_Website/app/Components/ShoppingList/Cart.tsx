@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import minus from '../../Components/ShopDetails/Minus.png';
 import plus from '../../Components/ShopDetails/Plus.png';
@@ -9,10 +9,22 @@ import { TiDeleteOutline } from 'react-icons/ti';
 import { useStateContext } from '../../context/StateContext'
 import { urlFor } from '@/sanity/lib/image';
 import Link from 'next/link';
+import OrderConfirmation from './OrderConfirmation';
 
 const Cart = () => {
     const cartRef = useRef<HTMLDivElement | null>(null);
     const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext()
+
+    const [showConfirmation, setShowConfirmation] = useState(false);
+
+    const handlePayNow = () => {
+        setShowConfirmation(true); // Show the confirmation popup
+    };
+
+    const closeConfirmation = () => {
+        setShowConfirmation(false); // Hide the confirmation popup
+        setShowCart(false); // Close the cart
+    };
 
     return (
         <div ref={cartRef} className='w-screen bg-black text-black bg-opacity-50 fixed right-0 top-0 z-[100] transition-all duration-1000 ease-in-out'>
@@ -102,11 +114,15 @@ const Cart = () => {
                             <h2 className='font-bold text-lg'>${(totalPrice + 10).toFixed(2)}</h2>
                         </div>
                         <div className='w-full m-auto'>
-                            <button className='w-full py-3 text-lg font-semibold text-white rounded-lg bg-[#FF9F0D]'>Pay Now</button>
+                            <button className='w-full py-3 text-lg font-semibold text-white rounded-lg bg-[#FF9F0D]' onClick={handlePayNow}>Pay Now</button>
                         </div>
                     </div>
                 )}
             </div>
+
+            {showConfirmation && (
+                <OrderConfirmation cartItems={cartItems} onClose={closeConfirmation} />
+            )}
         </div>
     );
 };
