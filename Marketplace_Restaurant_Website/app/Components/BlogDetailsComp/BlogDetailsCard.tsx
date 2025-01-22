@@ -5,7 +5,7 @@ import Pic02 from "./BlogDetails02.jpg";
 import Calender from "../BlogComponent/Calendar.png"
 import Chats from "../BlogComponent/Chats.png"
 import User from "../BlogComponent/UserCirclePlus.png"
-import Pagination from "../ShopComponents/Pagination";
+// import Pagination from "../ShopComponents/Pagination";
 import Sidebar from "../BlogComponent/Sidebar";
 import Quotation from "./Quotes.png"
 
@@ -117,9 +117,9 @@ const BlogLayout = () => {
             </div>
 
 
-            <div className="pb-20">
+            {/* <div className="pb-20">
                 <Pagination />
-            </div>
+            </div> */}
 
 
         </div>
