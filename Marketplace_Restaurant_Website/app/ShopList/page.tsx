@@ -1,13 +1,13 @@
 import { fetchProduct } from "@/sanity/utils";
 import ClientShopList from "../Components/ShopComponents/ClientSideComp/ClientShopList";
-import StateContext from "../context/StateContext";
+import { Suspense } from "react";
 
 export default async function ShopList() {
     const productData = await fetchProduct();
 
     return (
-        <StateContext>
+        <Suspense fallback={<div>Loading...</div>}>
             <ClientShopList productData={productData} />
-        </StateContext>
+        </Suspense>
     );
 }
