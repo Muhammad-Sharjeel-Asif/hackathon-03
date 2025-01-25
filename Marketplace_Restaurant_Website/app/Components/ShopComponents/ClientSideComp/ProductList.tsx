@@ -1,4 +1,3 @@
-// Components/ShopComponents/ProductList.tsx
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
@@ -18,7 +17,7 @@ interface ProductListProps {
 
 const ProductList = ({ displayedProducts }: ProductListProps) => {
     return (
-        <div className="w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="w-full lg:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-6">
             {displayedProducts.map((product, index) => (
                 <div key={index} className="overflow-hidden">
                     <Link href={`/product/${product.slug}`} passHref>

@@ -20,7 +20,7 @@ const SearchBar = () => {
             <input
                 type="text"
                 placeholder="Search Product"
-                className="bg-[#FF9F0D1A] h-[46px] w-[202px] placeholder:pl-6"
+                className="bg-[#FF9F0D1A] h-[46px] w-[202px] placeholder:pl-6 outline-[#FF9F0D]"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
             />

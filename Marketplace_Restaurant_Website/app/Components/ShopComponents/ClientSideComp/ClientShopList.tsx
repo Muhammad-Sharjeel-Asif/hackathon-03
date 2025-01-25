@@ -52,30 +52,37 @@ export default function ClientShopList({ productData }: ClientShopListProps) {
             <Header />
             <section className="bg-white font-sans text-[#333333]">
                 <BgPic PageHeading="Our Shop" PageName="shop" />
-                <div className="bg-white min-h-screen px-24 py-20 gap-x-8 text-[#333333]">
+                <div className="bg-white min-h-screen px-6 md:px-12 lg:px-24 py-20 gap-x-8 text-[#333333]">
                     <div className="container mx-auto px-4 py-6">
-                        <div className="flex justify-between items-center mb-6">
-                            <div className="flex items-center space-x-4">
-                                <label className="text-xl">Sort By :</label>
-                                <select
-                                    className="border border-[#E0E0E0] min-w-[236px] rounded-md px-3 py-1 text-[#BDBDBD] text-[18px]"
-                                    defaultValue="Newest" value={sortOrder}
-                                    onChange={(e) => setSortOrder(e.target.value)}
-                                >
-                                    <option>Newest</option>
-                                    <option>Oldest</option>
-                                </select>
+                    <div className="flex flex-wrap justify-between items-center mb-6 gap-y-4">
+    <div className="flex flex-wrap items-center gap-y-4 md:flex-row md:space-x-4">
+        <label className="text-xl whitespace-nowrap">Sort By :</label>
+        <select
+            className="border border-[#E0E0E0] min-w-[150px] md:min-w-[236px] rounded-md px-3 py-1 text-[#BDBDBD] text-[16px] md:text-[18px]"
+            defaultValue="Newest"
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+        >
+            <option>Newest</option>
+            <option>Oldest</option>
+        </select>
 
-                                <label className="text-xl">Show :</label>
-                                <select className="border border-[#E0E0E0] min-w-[236px] rounded-md px-3 py-1 text-[#BDBDBD] text-[18px]">
-                                    <option>Default</option>
-                                </select>
-                            </div>
-                        </div>
+        {/* Add a wrapper to break line */}
+        <div className="w-full md:w-auto"></div>
 
-                        <div className="flex gap-6">
+        <label className="text-xl whitespace-nowrap">Show :</label>
+        <select className="border border-[#E0E0E0] min-w-[150px] md:min-w-[236px] rounded-md px-3 py-1 text-[#BDBDBD] text-[16px] md:text-[18px]">
+            <option>Default</option>
+        </select>
+    </div>
+</div>
+
+
+                        <div className="flex flex-wrap lg:flex-nowrap gap-6">
                             <ProductList displayedProducts={displayedProducts} />
-                            <Sidebar />
+                            <div className="hidden lg:block w-1/3">
+                                <Sidebar />
+                            </div>
                         </div>
                     </div>
 

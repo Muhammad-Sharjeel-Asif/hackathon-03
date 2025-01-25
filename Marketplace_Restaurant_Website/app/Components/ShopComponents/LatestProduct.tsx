@@ -17,7 +17,7 @@ const LatestProduct = () => {
 
             {initialCartItems.map((item, index) => (
                 <div key={index}>
-                    <div className="flex items-start">
+                    <div className="flex mx-auto">
                         <Image
                             src={item.image}
                             alt={item.name}
