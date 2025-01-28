@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { urlFor } from '@/sanity/lib/image';
+import Link from 'next/link';
 
 interface OrderConfirmationProps {
     cartItems: {
@@ -41,12 +42,12 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({ cartItems, onClos
                         </div>
                     ))}
                 </div>
-                <button
-                    onClick={onClose}
+                <Link
+                    href={'/ShopList'}
                     className="mt-6 w-full py-2 bg-[#FF9F0D] text-white text-lg rounded-lg"
                 >
-                    Close
-                </button>
+                    Continue Shopping
+                </Link>
             </div>
         </div>
     );

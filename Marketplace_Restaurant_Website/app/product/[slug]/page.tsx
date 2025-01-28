@@ -22,7 +22,7 @@ export default async function ShopListWrapper({ params: { slug } }: { params: { 
     }
   } catch (error) {
     console.error("Error fetching product or products:", error);
-    return <div>Error loading product details.</div>;
+    return <div className="text-center text-red-500">Error loading product details.</div>;
   }
 
   return (

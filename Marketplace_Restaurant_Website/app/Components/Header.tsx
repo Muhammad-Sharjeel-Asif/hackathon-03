@@ -12,7 +12,7 @@ import SearchBar from "./Searchbar";
 
 export default function Header() {
     const { showCart, setShowCart } = useStateContext();
-    const [showSearch, setShowSearch] = useState(false); // Toggle search bar
+    const [showSearch, setShowSearch] = useState(false);
 
     return (
         <header>

@@ -27,7 +27,7 @@ const SimilarProduct = ({
         }
     };
     return (
-        <div className="container mx-auto px-4 mt-40">
+        <div className="container mx-auto px-4 md:mt-30 mt-24">
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold">Similar Products</h2>
                 {/* Navigation Arrows */}
@@ -61,7 +61,7 @@ const SimilarProduct = ({
                         <div className="pt-2">
                             <h3 className="text-lg font-semibold">{product.name}</h3>
                             <div className="flex items-center">
-                                <span className="text-orange-500 font-bold">${product.price}.00</span>
+                                <span className="text-[#FF9F0D] font-bold">${product.price}.00</span>
                                 {product.discount && (
                                     <span className="text-gray-400 text-sm line-through ml-2">
                                         ${product.discount}.00
