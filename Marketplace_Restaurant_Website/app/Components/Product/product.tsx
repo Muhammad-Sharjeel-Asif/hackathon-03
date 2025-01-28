@@ -52,11 +52,6 @@ export default function ShopList({
     productData: productProps[];
 }) {
     const { decQty, incQty, qty, onAdd } = useStateContext();
-    const [mainImage, setMainImage] = useState(urlFor(product.image).url());
-
-    const handleImageSwap = (thumbnails) => {
-        setMainImage(thumbnails.src);
-    };
 
     return (
         <>
