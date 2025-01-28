@@ -42,12 +42,12 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({ cartItems, onClos
                         </div>
                     ))}
                 </div>
-                <Link
-                    href={'/ShopList'}
+                <button
+                    onClick={onClose}
                     className="mt-6 w-full py-2 bg-[#FF9F0D] text-white text-lg rounded-lg"
                 >
-                    Continue Shopping
-                </Link>
+                    Close
+                </button>
             </div>
         </div>
     );

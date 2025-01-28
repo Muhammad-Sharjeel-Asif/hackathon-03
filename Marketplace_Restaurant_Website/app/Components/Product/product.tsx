@@ -23,7 +23,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { urlFor } from '@/sanity/lib/image';
 import { useStateContext } from "../../context/StateContext";
 import SimilarProduct from './SimilarProduct';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const thumbnails = [
     { src: picType01, alt: "Thumbnail 1" },
