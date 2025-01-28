@@ -1,8 +1,8 @@
 import Link from "next/link";
-import BgPic from "../Components/BgPic";
+import BgPic from "../Public/BgPic";
 import Image from "next/image";
 import Pagination from "../Components/ShopComponents/Pagination";
-import Header from "../Components/Header";
+import Header from "../Components/Header/Header";
 import { fetchProduct } from "@/sanity/utils";
 import { urlFor } from "@/sanity/lib/image";
 import StateContext from "../context/StateContext";

@@ -5,8 +5,8 @@ import Apple from "@/app/Public/Apple.png";
 import User from "@/app/Public/User (2).png";
 import Email from "@/app/Public/EnvelopeSimple (1).png";
 import Lock from "@/app/Public/Lock.png";
-import BgPic from "@/app/Components/BgPic";
-import Header from "../Components/Header"
+import BgPic from "@/app/Public/BgPic";
+import Header from "../Components/Header/Header"
 
 export default function SignUpPage() {
   return (

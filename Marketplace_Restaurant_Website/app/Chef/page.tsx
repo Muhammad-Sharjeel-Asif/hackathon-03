@@ -1,6 +1,6 @@
 import ChefSection, { ChefProp } from "../Components/Chef_components/ChefSection";
-import BgPic from "@/app/Components/BgPic";
-import Header from "../Components/Header";
+import BgPic from "@/app/Public/BgPic";
+import Header from "../Components/Header/Header";
 import { fetchChefs } from "@/sanity/utils";
 
 const Chef = async (): Promise<JSX.Element> => {

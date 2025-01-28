@@ -9,8 +9,8 @@ import Pic04 from '@/app/Components/ShoppingList/ShoppingList04.jpg';
 import Pic05 from '@/app/Components/ShoppingList/ShoppingList05.jpg';
 import Plus from '@/app/Components/ShoppingList/Plus.png';
 import Minus from '@/app/Components/ShoppingList/Minus.png';
-import BgPic from '../Components/BgPic';
-import Header from "../Components/Header"
+import BgPic from '../Public/BgPic';
+import Header from "../Components/Header/Header"
 
 import React, { useRef } from 'react';
 import { useStateContext } from '../context/StateContext'

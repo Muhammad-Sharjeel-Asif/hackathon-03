@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Pic01 from "./Home01.png";
 import BgPic from "./HomeBg.jpg";
@@ -10,9 +10,11 @@ import Link from "next/link";
 import Premium from '@/app/Public/Tote.png'
 import { useStateContext } from "@/app/context/StateContext";
 import Cart from "../ShoppingList/Cart";
+import { Menu, X } from "lucide-react";
 
 const HeroSection = () => {
   const { showCart, setShowCart } = useStateContext()
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
     <>
@@ -34,9 +36,9 @@ const HeroSection = () => {
 
             {/* Desktop - Centered FoodTuck */}
             <div className="hidden md:flex w-full justify-center">
-              <div className="text-2xl font-bold">
+              <Link href={'/'} className="text-2xl font-bold">
                 Food<span className="text-[#FF9F0D]">tuck</span>
-              </div>
+              </Link>
             </div>
 
             <div className="hidden md:flex w-full justify-between gap-x-4 items-center mt-2">
@@ -69,11 +71,32 @@ const HeroSection = () => {
               <div className="text-2xl font-bold">
                 Food<span className="text-[#FF9F0D]">tuck</span>
               </div>
-              <button onClick={() => setShowCart(true)} className="w-6 h-6">
-                <Image src={Premium} alt="Premium" width={24} height={24} />
-              </button>
-              {showCart && <Cart />}
+              <div className="flex items-center gap-x-3">
+                <button onClick={() => setShowCart(true)} className="w-6 h-6">
+                  <Image src={Premium} alt="Premium" width={24} height={24} />
+                </button>
+
+                <button onClick={() => setShowMobileMenu(!showMobileMenu)} className="text-[#FF9F0D]">
+                  {showMobileMenu ? <X size={25} /> : <Menu size={25} />}
+                </button>
+                {showCart && <Cart />}
+              </div>
             </div>
+
+            {/* Mobile Navigation (Hidden by Default) */}
+            {showMobileMenu && (
+              <nav className="md:hidden absolute top-[90px] left-0 w-full bg-[#0d0d0d] shadow-md p-4 space-y-4">
+                <Link href="/" className="block">Home</Link>
+                <Link href="/Menu" className="block">Menu</Link>
+                <Link href="/Blog" className="block">Blog</Link>
+                <Link href="/Pages" className="block">Pages</Link>
+                <Link href="/About" className="block">About</Link>
+                <Link href="/ShopList" className="block">Shop</Link>
+                <Link href="/Contact" className="block">Contact</Link>
+                <Searchbar />
+              </nav>
+            )}
+
           </header>
         </div>
 

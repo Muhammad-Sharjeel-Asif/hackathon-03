@@ -1,6 +1,6 @@
 import React from 'react'
-import BgPic from "@/app/Components/BgPic";
-import Header from "../Components/Header"
+import BgPic from "@/app/Public/BgPic";
+import Header from "../Components/Header/Header"
 import BlogCard from "../Components/BlogDetailsComp/BlogDetailsCard"
 
 const BlogDetails = () => {

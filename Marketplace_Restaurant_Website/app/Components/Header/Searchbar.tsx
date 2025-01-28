@@ -12,7 +12,7 @@ const SearchBar = ({ setShowSearch, showCloseIcon = true }: { setShowSearch: (va
   const handleSearch = () => {
     if (query.trim()) {
       router.push(`/Searchpage?query=${encodeURIComponent(query)}`);
-      setShowSearch(false); // Hide search bar after search
+      setShowSearch(false);
     }
   };
 

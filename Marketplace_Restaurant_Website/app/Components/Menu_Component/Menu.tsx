@@ -9,7 +9,7 @@ import Pic02 from './Menu02.jpg'
 import Pic03 from './Menu03.jpg'
 import Pic04 from './Menu04.jpg'
 import { Coffee } from 'lucide-react';
-import BgPic from '@/app/Components/BgPic';
+import BgPic from '@/app/Public/BgPic';
 import PartnersClients from '@/app/Components/Menu_Component/PartnerClientSec';
 import StateSection from '@/app/Components/HomeComponents/StatsSection';
 

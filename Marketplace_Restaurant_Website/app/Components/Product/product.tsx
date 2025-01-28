@@ -1,8 +1,8 @@
 "use client";
 
 import { Heart } from 'lucide-react';
-import BgPic from '../../Components/BgPic';
-import Header from "../../Components/Header"
+import BgPic from '../../Public/BgPic';
+import Header from "../Header/Header"
 import picType01 from '../../Components/ShopDetails/productType01.jpg';
 import picType02 from '../../Components/ShopDetails/productType02.jpg';
 import picType03 from '../../Components/ShopDetails/productType03.jpg';
@@ -13,7 +13,6 @@ import rightArrow from '../../Components/ShopDetails/rightArrow.png';
 import minus from '../../Components/ShopDetails/Minus.png';
 import plus from '../../Components/ShopDetails/Plus.png';
 import Cart from '@/app/Public/Tote.png';
-import heart from '../../Components/ShopDetails/heart.png';
 import compare from '../../Components/ShopDetails/compare.png';
 import yt from '../../Components/ShopDetails/yt.png';
 import facebook from '../../Components/ShopDetails/facebook.png';

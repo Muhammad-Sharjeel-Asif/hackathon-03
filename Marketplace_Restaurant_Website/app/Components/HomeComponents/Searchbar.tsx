@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Search from "@/app/Public/MagnifyingGlass.png";
 
-
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const router = useRouter();

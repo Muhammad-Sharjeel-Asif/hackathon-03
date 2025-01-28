@@ -1,6 +1,6 @@
 import Link from "next/link";
-import BgPic from "../Components/BgPic";
-import Header from "../Components/Header"
+import BgPic from "../Public/BgPic";
+import Header from "../Components/Header/Header"
 
 export default function ErrorPage() {
   return (

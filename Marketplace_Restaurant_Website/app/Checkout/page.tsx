@@ -4,8 +4,8 @@ import CaretLeft from "@/app/Public/CaretLeft.png"
 import CaretRight from "@/app/Public/CaretRight.png"
 import Arrow from "@/app/Public/ArrowRight.png"
 import Pic01 from "@/app/Components/Checkout01.jpg"
-import BgPic from '../Components/BgPic';
-import Header from "../Components/Header"
+import BgPic from '../Public/BgPic';
+import Header from "../Components/Header/Header"
 
 export default function Checkout() {
   return (

@@ -1,11 +1,11 @@
 'use client'
 
-import BgPic from '../Components/BgPic';
+import BgPic from '../Public/BgPic';
 import React, { useState } from 'react';
 import Plus from '@/app/Public/Plus.png'
 import Minus from '@/app/Public/Minus.png'
 import Image from 'next/image';
-import Header from "../Components/Header"
+import Header from "../Components/Header/Header"
 
 
 const faqData = [
