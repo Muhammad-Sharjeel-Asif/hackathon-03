@@ -23,6 +23,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { urlFor } from '@/sanity/lib/image';
 import { useStateContext } from "../../context/StateContext";
 import SimilarProduct from './SimilarProduct';
+import { useState } from 'react';
 
 const thumbnails = [
     { src: picType01, alt: "Thumbnail 1" },
@@ -51,7 +52,11 @@ export default function ShopList({
     productData: productProps[];
 }) {
     const { decQty, incQty, qty, onAdd } = useStateContext();
+    const [mainImage, setMainImage] = useState(urlFor(product.image).url());
 
+    const handleImageSwap = (thumbnails) => {
+        setMainImage(thumbnails.src);
+    };
 
     return (
         <>
