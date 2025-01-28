@@ -1,5 +1,6 @@
 "use client";
 
+import { Heart } from 'lucide-react';
 import BgPic from '../../Components/BgPic';
 import Header from "../../Components/Header"
 import picType01 from '../../Components/ShopDetails/productType01.jpg';
@@ -23,7 +24,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { urlFor } from '@/sanity/lib/image';
 import { useStateContext } from "../../context/StateContext";
 import SimilarProduct from './SimilarProduct';
-// import { useState } from 'react';
+import { useState } from 'react';
 
 const thumbnails = [
     { src: picType01, alt: "Thumbnail 1" },
@@ -52,6 +53,33 @@ export default function ShopList({
     productData: productProps[];
 }) {
     const { decQty, incQty, qty, onAdd } = useStateContext();
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [mainImage, setMainImage] = useState<string>(urlFor(product.image).url());
+    const [isRed, setIsRed] = useState(false);
+
+
+    // Handle thumbnail click
+    const handleThumbnailClick = (index: number) => {
+        const newImage = thumbnails[index].src;
+        setMainImage(newImage.src);
+        setActiveIndex(index);
+    };
+
+    // Handle Next button
+    const handleNext = () => {
+        const newIndex = (activeIndex + 1) % thumbnails.length;
+        handleThumbnailClick(newIndex);
+    };
+
+    // Handle Previous button
+    const handlePrev = () => {
+        const newIndex = (activeIndex - 1 + thumbnails.length) % thumbnails.length;
+        handleThumbnailClick(newIndex);
+    };
+
+    const toggleHeart = () => {
+        setIsRed(!isRed);
+    };
 
     return (
         <>
@@ -63,13 +91,26 @@ export default function ShopList({
                 <div className="bg-white min-h-screen px-4 sm:px-6 lg:px-24 py-10 gap-x-8 text-[#333333]">
                     <div className="container mx-auto p-4 md:p-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-auto md:h-[596px]">
+                            <div className="md:hidden flex flex-wrap items-center justify-between space-x-2">
+                                <span className="bg-[#FF9F0D] text-white text-sm px-4 py-1 rounded-md">
+                                    In stock
+                                </span>
+
+                                {/* Mobile arrows and in stock */}
+                                <div className="flex gap-x-4">
+                                    <button onClick={handlePrev} className="text-[#828282] text-lg flex"><Image src={leftArrow} alt="left arrow" />Prev</button>
+                                    <button onClick={handleNext} className="text-[#828282] text-lg flex">Next<Image src={rightArrow} alt="right arrow" /></button>
+                                </div>
+                            </div>
+
                             {/* Left - Image Gallery */}
                             <div className="grid grid-cols-4 gap-4 items-center">
 
-                                {/* Thumbnails */}
+                                {/* Thumbnails for desktop */}
                                 <div className="col-span-1 grid-rows-4 gap-4 hidden md:grid h-full">
                                     {thumbnails.map((thumbnail, index) => (
-                                        <div className="relative" key={index}>
+                                        <div key={index} onClick={() => handleThumbnailClick(index)}
+                                            className={`relative cursor-pointer border ${activeIndex === index ? "border-2 border-[#FF9F0D]" : "border-gray-300"}`}>
                                             <Image
                                                 src={thumbnail.src}
                                                 alt={thumbnail.alt}
@@ -83,17 +124,18 @@ export default function ShopList({
                                 {/* Main Image on the Right */}
                                 <div className="col-span-3 relative h-72 md:h-full">
                                     <Image
-                                        src={urlFor(product.image).url()}
+                                        src={mainImage}
                                         alt={product.name}
                                         className="absolute inset-0 object-cover rounded-sm"
                                         fill
                                     />
                                 </div>
 
-                                {/* Thumbnails */}
+                                {/* Thumbnails for mobile */}
                                 <div className="col-span-1 grid-rows-4 gap-4 md:hidden grid h-full">
                                     {thumbnails.map((thumbnail, index) => (
-                                        <div className="relative" key={index}>
+                                        <div key={index} onClick={() => handleThumbnailClick(index)}
+                                            className={`relative cursor-pointer border ${activeIndex === index ? "border-2 border-[#FF9F0D]" : "border-gray-300"}`}>
                                             <Image
                                                 src={thumbnail.src}
                                                 alt={thumbnail.alt}
@@ -107,14 +149,14 @@ export default function ShopList({
 
                             {/* Right - Product Details */}
                             <div>
-                                <div className="flex flex-wrap items-center justify-between space-x-2">
+                                <div className="hidden md:flex flex-wrap items-center justify-between space-x-2">
                                     <span className="bg-[#FF9F0D] text-white text-sm px-4 py-1 rounded-md">
                                         In stock
                                     </span>
 
                                     <div className="flex gap-x-4">
-                                        <span className="text-[#828282] text-lg flex"><Image src={leftArrow} alt="left arrow" />Prev</span>
-                                        <span className="text-[#828282] text-lg flex">Next<Image src={rightArrow} alt="right arrow" /></span>
+                                        <button onClick={handlePrev} className="text-[#828282] text-lg flex"><Image src={leftArrow} alt="left arrow" />Prev</button>
+                                        <button onClick={handleNext} className="text-[#828282] text-lg flex">Next<Image src={rightArrow} alt="right arrow" /></button>
                                     </div>
                                 </div>
                                 <h1 className="text-2xl md:text-5xl font-bold mt-3 mb-4 md:mb-8">{product.name}</h1>
@@ -161,7 +203,15 @@ export default function ShopList({
 
                                 {/* Wishlist and Compare */}
                                 <div className="flex flex-wrap items-center space-x-4 text-lg">
-                                    <button className="flex items-center gap-x-2"><Image src={heart} alt="heart" />Add to Wishlist</button>
+                                    <button className="flex items-center gap-x-2">
+                                        <Heart
+                                            className="heart-icon"
+                                            fill={isRed ? 'red' : 'none'}
+                                            stroke={isRed ? 'red' : 'currentColor'}
+                                            onClick={toggleHeart}
+                                            style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                                        />
+                                        Add to Wishlist</button>
 
                                     <button className="flex items-center gap-x-2"><Image src={compare} alt="compare" />Compare</button>
                                 </div>

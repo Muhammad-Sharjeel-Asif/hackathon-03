@@ -18,12 +18,12 @@ const Cart = () => {
     const [showConfirmation, setShowConfirmation] = useState(false);
 
     const handlePayNow = () => {
-        setShowConfirmation(true); // Show the confirmation popup
+        setShowConfirmation(true);
     };
 
     const closeConfirmation = () => {
-        setShowConfirmation(false); // Hide the confirmation popup
-        setShowCart(false); // Close the cart
+        setShowConfirmation(false);
+        setShowCart(false);
     };
 
     return (
@@ -54,7 +54,7 @@ const Cart = () => {
         <div className='mt-4 overflow-auto max-h-[70vh] p-4 space-y-4'>
             {cartItems.length >= 1 && cartItems.map((items) => (
                 <div key={items._id} className="flex gap-4 p-4 rounded-lg border border-gray-200 bg-white flex-col md:flex-row">
-                    <div className="overflow-hidden w-24 h-24 flex-shrink-0">
+                    <div className="overflow-hidden md:w-24 h-24 w-full flex-shrink-0">
                         <Image
                             src={items.image ? urlFor(items.image).url() : ""}
                             alt={items.name}
