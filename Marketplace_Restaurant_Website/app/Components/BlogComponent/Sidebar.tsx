@@ -35,19 +35,19 @@ const filterMenu = [
     { image: pic09, title: 'Vegetable', price: 16 }
 ];
 
-const tags = [
-    "Sandwich",
-    "Tikka",
-    "Bbq",
-    "Restaurant",
-    "Chicken Sharma",
-    "Health",
-    "Fastfood",
-    "Food",
-    "Pizza",
-    "Burger",
-    "Chicken",
-];
+// const tags = [
+//     "Sandwich",
+//     "Tikka",
+//     "Bbq",
+//     "Restaurant",
+//     "Chicken Sharma",
+//     "Health",
+//     "Fastfood",
+//     "Food",
+//     "Pizza",
+//     "Burger",
+//     "Chicken",
+// ];
 
 const Sidebar = () => {
     return (
