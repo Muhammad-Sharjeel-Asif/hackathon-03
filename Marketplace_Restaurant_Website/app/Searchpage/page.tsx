@@ -1,7 +1,6 @@
 import Link from "next/link";
 import BgPic from "../Public/BgPic";
 import Image from "next/image";
-import Pagination from "../Components/ShopComponents/Pagination";
 import Header from "../Components/Header/Header";
 import { fetchProduct } from "@/sanity/utils";
 import { urlFor } from "@/sanity/lib/image";
@@ -25,7 +24,7 @@ export default async function ShopList({ searchParams }: { searchParams: { query
 
                 <BgPic PageHeading="Search Results" PageName="Search" />
 
-                <div className="bg-white min-h-screen px-24 py-20 gap-x-8 text-[#333333]">
+                <div className="bg-white min-h-screen px-6 md:px-12 lg:px-24 py-20 gap-x-8 text-[#333333]">
                     <div className="container mx-auto px-4 py-6">
                         <h2 className="text-2xl font-bold mb-4">
                             Showing results for: <span className="text-[#FF9F0D] ml-1">{searchQuery}</span>
@@ -35,7 +34,7 @@ export default async function ShopList({ searchParams }: { searchParams: { query
                             <p className="text-gray-500">No products found.</p>
                         ) : (
                             <div className="flex gap-6">
-                                <div className="w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div className="w-full lg:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-6">
                                     {filteredProducts.map((product, index) => (
                                         <div key={index} className="overflow-hidden">
                                             <Link href={`/product/${product.slug}`} passHref>
@@ -66,11 +65,12 @@ export default async function ShopList({ searchParams }: { searchParams: { query
                                 </div>
 
                                 {/* Sidebar */}
-                                <Sidebar />
+                                <div className="hidden lg:block w-1/3">
+                                    <Sidebar />
+                                </div>
                             </div>
                         )}
                     </div>
-                    <Pagination currentPage={1} />
                 </div>
             </section>
         </StateContext>
