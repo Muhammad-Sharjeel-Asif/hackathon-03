@@ -9,7 +9,7 @@ import Calender from "./Calendar.png"
 import Chats from "./Chats.png"
 import User from "./UserCirclePlus.png"
 import Sidebar from "./Sidebar";
-import Pagination from "../ShopComponents/Pagination";
+// import Pagination from "../ShopComponents/Pagination";
 import Link from "next/link";
 
 const BlogPost = [
@@ -83,9 +83,9 @@ const BlogLayout = () => {
         <Sidebar />
       </div>
 
-      <div className="pb-20">
+      {/* <div className="pb-20">
         <Pagination currentPage={1} />
-      </div>
+      </div> */}
     </div>
   );
 };
