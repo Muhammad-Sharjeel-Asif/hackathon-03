@@ -16,7 +16,7 @@ const FollowUs = () => {
     ];
 
     return (
-        <div className="border border-[#E0E0E0] p-4 mt-11">
+        <div className="border border-[#E0E0E0] p-4 mt-6">
             <div className="mx-2 my-4">
                 <h4 className="text-[#333333] text-xl font-bold mb-4">Follow Us</h4>
                 <div className="flex justify-center gap-4">

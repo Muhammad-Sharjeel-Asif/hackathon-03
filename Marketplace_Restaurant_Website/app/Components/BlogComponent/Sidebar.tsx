@@ -51,7 +51,7 @@ const tags = [
 
 const Sidebar = () => {
     return (
-        <aside className="w-full lg:w-1/3">
+        <aside className="w-full lg:w-1/3 md:block hidden">
             {/* Author Bio */}
             <div className='flex border border-[#E0E0E0] w-full justify-between'>
                 <input
@@ -61,7 +61,7 @@ const Sidebar = () => {
                 <span><Image src={Glass} alt='Glass' className='bg-[#FF9F0D] h-[60px] p-5 w-[66px]' /></span>
             </div>
 
-            <div className="border border-[#E0E0E0] p-4 my-11">
+            <div className="border border-[#E0E0E0] p-4 my-6">
                 <div className="mx-1 my-4">
 
                     <Image
@@ -96,7 +96,7 @@ const Sidebar = () => {
             </div>
 
             {/* Recent Posts */}
-            <div className="border border-[#E0E0E0] p-4 my-11">
+            <div className="border border-[#E0E0E0] p-4 my-6">
                 <div className="mx-2 my-4">
                     <h4 className="text-[#333333] text-xl font-bold mb-4">Recent Posts</h4>
                     <ul className="space-y-4">
@@ -124,7 +124,7 @@ const Sidebar = () => {
 
 
             {/* Filter By Menu */}
-            <div className="border border-[#E0E0E0] p-4 my-11">
+            <div className="border border-[#E0E0E0] p-4 my-6">
                 <div className="mx-2 my-4">
                     <h4 className="text-[#333333] text-xl font-bold mb-4">Filter By Menu</h4>
                     <ul className="space-y-4">
@@ -150,7 +150,7 @@ const Sidebar = () => {
             </div>
 
             {/* Categories */}
-            <div className="border border-[#E0E0E0] p-4 mt-11">
+            {/* <div className="border border-[#E0E0E0] p-4 mt-11">
                 <div className="mx-2 my-4">
                     <h4 className="text-[#333333] text-xl font-bold mb-4">Popular Tags</h4>
                     <div className="flex flex-wrap gap-4">
@@ -165,7 +165,7 @@ const Sidebar = () => {
                     </div>
                 </div>
 
-            </div>;
+            </div>; */}
             {/* Photo Gallery */}
             <PhotoGallery />
 

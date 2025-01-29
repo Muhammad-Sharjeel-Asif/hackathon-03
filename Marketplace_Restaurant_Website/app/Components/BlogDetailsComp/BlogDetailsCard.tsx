@@ -5,7 +5,7 @@ import Pic02 from "./BlogDetails02.jpg";
 import Calender from "../BlogComponent/Calendar.png"
 import Chats from "../BlogComponent/Chats.png"
 import User from "../BlogComponent/UserCirclePlus.png"
-// import Pagination from "../ShopComponents/Pagination";
+import Pagination from "../ShopComponents/Pagination";
 import Sidebar from "../BlogComponent/Sidebar";
 import Quotation from "./Quotes.png"
 
@@ -15,8 +15,8 @@ const BlogPost = [
 
 const BlogLayout = () => {
     return (
-        <div className="bg-white min-h-screen px-28">
-            <div className="container mx-auto pt-20 flex flex-wrap lg:flex-nowrap gap-8">
+        <div className="bg-white min-h-screen px-4 sm:px-10 lg:px-28">
+            <div className="container mx-auto pt-10 flex flex-col lg:flex-row gap-8 mb-14">
                 {/* Main Content */}
                 <main className="w-full lg:w-3/4">
                     {BlogPost.map((post, index) => (
@@ -25,14 +25,14 @@ const BlogLayout = () => {
                                 <Image
                                     src={post.image}
                                     alt={post.title}
-                                    className="w-full h-[520px] object-cover"
+                                    className="w-full h-auto max-h-[520px] object-cover"
                                 // width={500}
                                 // height={300}
                                 />
                                 {/* Date Badge */}
-                                <div className="absolute top-4 left-4 bg-[#FF9F0D] w-[59.93px] h-[60px] text-white rounded-md">
-                                    <p className="text-center font-bold text-lg pt-1">14</p>
-                                    <p className="text-center">Feb</p>
+                                <div className="absolute top-4 left-4 bg-[#FF9F0D] w-14 h-14 text-white rounded-md flex flex-col items-center justify-center">
+                                    <p className="font-bold text-lg">14</p>
+                                    <p className="text-sm">Feb</p>
                                 </div>
                             </div>
 
@@ -53,14 +53,15 @@ const BlogLayout = () => {
                             </div>
 
                             <div className="pt-4">
-                                <h2 className="text-2xl font-bold text-[#333333]">
+                                <h2 className="text-xl sm:text-2xl font-bold text-[#333333]">
                                     {post.title}
                                 </h2>
 
-                                <p className="text-[#4F4F4F] mt-10">
+                                <p className="text-[#4F4F4F]">
                                     Netus pretium tellus nulla commodo massa adipiscing in elementum magna congue condimentum placerat habitasse potenti ac orci a quisque tristique elementum et viverra at condimentum scelerisque eu mi. Elit praesent cras vehicula a ullamcorper nulla scelerisque aliquet tempus faucibus quam ac aliquet nibh a condimentum suspendisse hac integer leo erat aliquam ut himenaeos.
                                 </p>
-                                <p className="text-[#4F4F4F] mt-4">Ac haca ullamcorper donec ante habi tasse donec imperdiet eturpis varius per a augue magna hac.
+                                <p className="text-[#4F4F4F]">
+                                    Ac haca ullamcorper donec ante habi tasse donec imperdiet eturpis varius per a augue magna hac.
                                     Nec hac et vestibulum duis a tincidunt per a aptent interdum purus feugiat a id aliquet erat
                                     himenaeos nunc torquent euismod adipiscing adipiscing dui gravida justo.
                                 </p>
@@ -70,7 +71,7 @@ const BlogLayout = () => {
                                     {/* Quote Icon */}
                                     <div className="text-4xl mr-4"><Image src={Quotation} alt="Quotation" className="w-32 h-10" /></div>
                                     {/* Quote Text */}
-                                    <p className="text-2xl font-bold">
+                                    <p className="text-lg sm:text-2xl font-bold">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                                         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
@@ -97,7 +98,7 @@ const BlogLayout = () => {
                                                 src={Pic02}
                                                 alt="Delicious Food"
                                                 className="w-[424px] h-[366px] object-cover"
-                                                // width={400}
+                                            // width={400}
                                             />
                                         </div>
                                     </div>
@@ -117,9 +118,9 @@ const BlogLayout = () => {
             </div>
 
 
-            {/* <div className="pb-20">
-                <Pagination />
-            </div> */}
+            <div className="pb-20">
+                <Pagination currentPage={1} />
+            </div>
 
 
         </div>
