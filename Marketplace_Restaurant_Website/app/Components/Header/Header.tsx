@@ -9,13 +9,16 @@ import Cart from "../ShoppingList/Cart";
 import { useState } from "react";
 import { useStateContext } from '../../context/StateContext';
 import SearchBar from "./Searchbar";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Searchbar from "../HomeComponents/Searchbar";
+import { PagesDropdown } from "../Pages/PagesDropdown";
 
 export default function Header() {
     const { showCart, setShowCart } = useStateContext();
     const [showSearch, setShowSearch] = useState(false);
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const [showPagesDropdown, setShowPagesDropdown] = useState(false);
+    const [showMobilePagesDropdown, setShowMobilePagesDropdown] = useState(false);
 
     return (
         <header>
@@ -29,7 +32,16 @@ export default function Header() {
                         <Link href={"/"} className="font">Home</Link>
                         <Link href={"/Menu"} className="font">Menu</Link>
                         <Link href={"/Blog"} className="font">Blog</Link>
-                        <Link href={"/ShopList"} className="font">Pages</Link>
+                        <div className="relative">
+                            <button
+                                onClick={() => setShowPagesDropdown(!showPagesDropdown)}
+                                className="flex items-center gap-1"
+                            >
+                                Pages
+                                <ChevronDown size={16} />
+                            </button>
+                            {showPagesDropdown && <PagesDropdown isMobile={false} />}
+                        </div>
                         <Link href={"/AboutUs"} className="font">About</Link>
                         <Link href={"/ShopList"} className="font">Shop</Link>
                         <Link href={"/Contact"} className="font">Contact</Link>
@@ -62,7 +74,14 @@ export default function Header() {
                             <Link href="/" className="block">Home</Link>
                             <Link href="/Menu" className="block">Menu</Link>
                             <Link href="/Blog" className="block">Blog</Link>
-                            <Link href="/Pages" className="block">Pages</Link>
+                            <button
+                                onClick={() => setShowMobilePagesDropdown(!showMobilePagesDropdown)}
+                                className="flex items-center gap-2"
+                            >
+                                Pages
+                                <ChevronDown size={16} />
+                            </button>
+                            {showMobilePagesDropdown && <PagesDropdown isMobile={true} />}
                             <Link href="/AboutUs" className="block">About</Link>
                             <Link href="/ShopList" className="block">Shop</Link>
                             <Link href="/Contact" className="block">Contact</Link>

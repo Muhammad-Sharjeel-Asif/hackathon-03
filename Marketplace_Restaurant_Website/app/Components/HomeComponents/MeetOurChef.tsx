@@ -53,7 +53,6 @@ const MeetOurChef = () => {
                   <h3 className="text-left text-lg font-bold leading-tight">
                     {chef.name}
                   </h3>
-                  {/* <p className="text-left text-sm text-black">{chef.designation}</p> */}
                 </div>
               </div>
             ))}

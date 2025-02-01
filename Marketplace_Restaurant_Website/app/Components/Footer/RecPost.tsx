@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import RecPost from '@/app/Components/Footer/Chicken.jpg';
+import Link from 'next/link';
 
 export default function RecentPostsSection() {
   const posts = [
@@ -12,19 +13,19 @@ export default function RecentPostsSection() {
     <div className="w-full max-w-sm px-4 sm:px-0">
       <h3 className="text-lg sm:text-xl font-bold mb-6 sm:mb-8">Recent Post</h3>
       {posts.map((post, index) => (
-        <div key={index} className="flex items-center md:mb-2 mb-6">
+        <Link href='/BlogDetails' key={index} className="flex items-center md:mb-2 mb-6">
           <Image 
             src={post.img} 
             alt="" 
-            width={80} // Explicit width
-            height={80} // Explicit height
+            width={80}
+            height={80}
             className="object-cover mr-4" 
           />
           <div>
             <h4 className="font-semibold text-sm sm:text-base">{post.title}</h4>
             <p className="text-xs sm:text-sm text-gray-400">{post.date}</p>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

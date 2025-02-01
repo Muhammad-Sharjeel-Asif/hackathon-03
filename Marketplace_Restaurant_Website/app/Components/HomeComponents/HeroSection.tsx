@@ -10,11 +10,14 @@ import Link from "next/link";
 import Premium from '@/app/Public/Tote.png'
 import { useStateContext } from "@/app/context/StateContext";
 import Cart from "../ShoppingList/Cart";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { PagesDropdown } from "../Pages/PagesDropdown";
 
 const HeroSection = () => {
   const { showCart, setShowCart } = useStateContext()
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showPagesDropdown, setShowPagesDropdown] = useState(false);
+  const [showMobilePagesDropdown, setShowMobilePagesDropdown] = useState(false);
 
   return (
     <>
@@ -44,16 +47,25 @@ const HeroSection = () => {
             <div className="hidden md:flex w-full justify-between gap-x-4 items-center mt-2">
               {/* Navigation */}
               <nav className="flex space-x-8">
-                <div className="group relative inline-block">
-                  <Link href={"/"} className="font">Home</Link>
-                  <span className="absolute left-1/2 transform -translate-x-1/2 mt-6 w-[7px] h-[7px] bg-[#FF9F0D] rounded-full"></span>
-                </div>
-                <Link href={"/Menu"} className="font">Menu</Link>
-                <Link href={"/Blog"} className="font">Blog</Link>
-                <Link href={"/Pages"} className="font">Pages</Link>
-                <Link href={"/AboutUs"} className="font">About</Link>
-                <Link href={"/ShopList"} className="font">Shop</Link>
-                <Link href={"/Contact"} className="font">Contact</Link>
+                <Link href={"/"}   className="font ball">Home</Link>
+                <Link href={"/Menu"} className="font ball">Menu</Link>
+                <Link href={"/Blog"} className="font ball">Blog</Link>
+                <button
+                  onClick={() => setShowPagesDropdown(!showPagesDropdown)}
+                  className="flex items-center gap-1 relative"
+                >
+                  Pages
+                  <ChevronDown size={16} />
+                </button>
+
+                {showPagesDropdown && (
+                  <div className="absolute top-full left-1/4 z-50">
+                    <PagesDropdown isMobile={false} />
+                  </div>
+                )}
+                <Link href={"/AboutUs"} className="font ball">About</Link>
+                <Link href={"/ShopList"} className="font ball">Shop</Link>
+                <Link href={"/Contact"} className="font ball">Contact</Link>
               </nav>
 
               {/* Search & Cart */}
@@ -89,7 +101,14 @@ const HeroSection = () => {
                 <Link href="/" className="block">Home</Link>
                 <Link href="/Menu" className="block">Menu</Link>
                 <Link href="/Blog" className="block">Blog</Link>
-                <Link href="/ShopList" className="block">Pages</Link>
+                <button
+                  onClick={() => setShowMobilePagesDropdown(!showMobilePagesDropdown)}
+                  className="flex items-center gap-2"
+                >
+                  Pages
+                  <ChevronDown size={16} />
+                </button>
+                {showMobilePagesDropdown && <PagesDropdown isMobile={true} />}
                 <Link href="/AboutUs" className="block">About</Link>
                 <Link href="/ShopList" className="block">Shop</Link>
                 <Link href="/Contact" className="block">Contact</Link>
@@ -98,10 +117,10 @@ const HeroSection = () => {
             )}
 
           </header>
-        </div>
+        </div >
 
         {/* Content */}
-        <div className="relative z-10 mt-16 text-white flex justify-between items-center gap-10">
+        < div className="relative z-10 mt-16 text-white flex justify-between items-center gap-10" >
           <div>
             <SocialSidebar />
           </div>
@@ -133,8 +152,8 @@ const HeroSection = () => {
               height={1000}
             />
           </div>
-        </div>
-      </section>
+        </div >
+      </section >
     </>
   );
 };

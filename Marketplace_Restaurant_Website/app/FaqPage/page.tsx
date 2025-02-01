@@ -1,12 +1,9 @@
-'use client'
+'use client';
 
+import { useState } from 'react';
+import Header from "../Components/Header/Header";
 import BgPic from '../Public/BgPic';
-import React, { useState } from 'react';
-import Plus from '@/app/Public/Plus.png'
-import Minus from '@/app/Public/Minus.png'
-import Image from 'next/image';
-import Header from "../Components/Header/Header"
-
+import { Minus, Plus } from 'lucide-react';
 
 const faqData = [
   {
@@ -38,8 +35,8 @@ const faqData = [
 const FAQPage: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const handleToggle = (index: number) => {
+    setOpenIndex(prevIndex => prevIndex === index ? null : index);
   };
 
   return (
@@ -49,29 +46,42 @@ const FAQPage: React.FC = () => {
         <BgPic PageHeading='FAQ page' PageName='faq' />
 
         <main className="mx-auto py-16 px-4 max-w-[1320px]">
-          <h2 className="text-5xl leading-[56px] font-bold text-center mb-8 text-[#333333]">Questions Looks Here</h2>
-          <p className="text-center text-[#4F4F4F] mb-12">
-            Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          </p>
-
-          <div className="grid gap-6 md:grid-cols-2 min-w-[648px] mb-8 text-[#333333] ">
+          <h2 className="text-5xl leading-[56px] font-bold text-center mb-8 text-[#333333]">
+            Frequently Asked Questions
+          </h2>
+          
+          <div className="grid gap-6 md:grid-cols-2 text-[#4F4F4F]">
             {faqData.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-lg transition-transform duration-200"
+                className="bg-white p-6 rounded-lg shadow-lg transition-all duration-200"
               >
+                <button
+                  onClick={() => handleToggle(index)}
+                  className="w-full flex justify-between items-center focus:outline-none"
+                  aria-expanded={openIndex === index}
+                >
+                  <h3 className="text-lg font-bold text-left pr-4">
+                    {faq.question}
+                  </h3>
+                  {openIndex === index ? (
+                    <Minus className="w-6 h-6 text-[#FF9F0D]" />
+                  ) : (
+                    <Plus className="w-6 h-6 text-[#FF9F0D]" />
+                  )}
+                </button>
+
                 <div
-                  onClick={() => toggleFAQ(index)}
-                  className="cursor-pointer flex flex-col w-full items-center px-4"
-                ><div className='flex w-[600px]  justify-between'>
-                    <h3 className="text-lg font-bold">{faq.question}</h3>
-                    <Image src={openIndex === index ? Minus : Plus} alt="Toggle Icon" width={24} height={24} />
-                  </div>
-                  <article className='w-[600px] h-[72px]'>{faq.answer}</article>
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openIndex === index
+                      ? 'max-h-[500px] opacity-100 mt-4'
+                      : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <p className="text-gray-600">
+                    {faq.answer}
+                  </p>
                 </div>
-                {openIndex === index && (
-                  <p className="text-sm text-gray-600 mt-4">{faq.answer}</p>
-                )}
               </div>
             ))}
           </div>
