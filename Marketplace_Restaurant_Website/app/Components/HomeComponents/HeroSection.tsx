@@ -51,7 +51,7 @@ const HeroSection = () => {
                 <Link href={"/Menu"} className="font">Menu</Link>
                 <Link href={"/Blog"} className="font">Blog</Link>
                 <Link href={"/Pages"} className="font">Pages</Link>
-                <Link href={"/About"} className="font">About</Link>
+                <Link href={"/AboutUs"} className="font">About</Link>
                 <Link href={"/ShopList"} className="font">Shop</Link>
                 <Link href={"/Contact"} className="font">Contact</Link>
               </nav>
