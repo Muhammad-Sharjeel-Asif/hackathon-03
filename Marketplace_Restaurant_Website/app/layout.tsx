@@ -5,6 +5,13 @@ import Footer from "./Components/Footer";
 import StateContext from "./context/StateContext";
 import { Toaster } from "react-hot-toast";
 // import Header from "./Components/Header";
+// import {
+//   ClerkProvider,
+//   SignInButton,
+//   SignedIn,
+//   SignedOut,
+//   UserButton
+// } from '@clerk/nextjs'
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,5 +46,19 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
+
+    // <ClerkProvider>
+    //   <html lang="en">
+    //     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    //       <SignedOut>
+    //         <SignInButton />
+    //       </SignedOut>
+    //       <SignedIn>
+    //         <UserButton />
+    //       </SignedIn>
+    //       {children}
+    //     </body>
+    //   </html>
+    // </ClerkProvider>
   );
 }

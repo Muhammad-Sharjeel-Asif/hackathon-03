@@ -26,8 +26,6 @@ const BlogLayout = () => {
                                     src={post.image}
                                     alt={post.title}
                                     className="w-full h-auto max-h-[520px] object-cover"
-                                // width={500}
-                                // height={300}
                                 />
                                 {/* Date Badge */}
                                 <div className="absolute top-4 left-4 bg-[#FF9F0D] w-14 h-14 text-white rounded-md flex flex-col items-center justify-center">

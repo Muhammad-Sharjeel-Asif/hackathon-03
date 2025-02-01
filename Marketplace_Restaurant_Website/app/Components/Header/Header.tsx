@@ -30,7 +30,7 @@ export default function Header() {
                         <Link href={"/Menu"} className="font">Menu</Link>
                         <Link href={"/Blog"} className="font">Blog</Link>
                         <Link href={"/ShopList"} className="font">Pages</Link>
-                        <Link href={"/About"} className="font">About</Link>
+                        <Link href={"/AboutUs"} className="font">About</Link>
                         <Link href={"/ShopList"} className="font">Shop</Link>
                         <Link href={"/Contact"} className="font">Contact</Link>
                     </nav>
@@ -44,7 +44,7 @@ export default function Header() {
                                 <button className="hidden md:flex" onClick={() => setShowSearch(true)}>
                                     <Image src={Search} alt="Search" />
                                 </button>
-                                <Link href={'/SignUp'}>
+                                <Link href={'/signup'}>
                                     <Image src={User} alt="User" />
                                 </Link>
                                 <button onClick={() => setShowCart(true)}>
@@ -58,12 +58,12 @@ export default function Header() {
                     </div>
 
                     {showMobileMenu && (
-                        <nav className="md:hidden absolute top-[90px] left-0 w-full bg-[#0d0d0d] shadow-md p-4 space-y-4">
+                        <nav className="md:hidden absolute top-[90px] left-0 w-full bg-[#0d0d0d] shadow-md p-4 space-y-4 z-50">
                             <Link href="/" className="block">Home</Link>
                             <Link href="/Menu" className="block">Menu</Link>
                             <Link href="/Blog" className="block">Blog</Link>
                             <Link href="/Pages" className="block">Pages</Link>
-                            <Link href="/About" className="block">About</Link>
+                            <Link href="/AboutUs" className="block">About</Link>
                             <Link href="/ShopList" className="block">Shop</Link>
                             <Link href="/Contact" className="block">Contact</Link>
                             <Searchbar />

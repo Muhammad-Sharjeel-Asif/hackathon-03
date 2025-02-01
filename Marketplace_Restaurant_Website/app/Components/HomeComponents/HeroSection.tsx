@@ -89,8 +89,8 @@ const HeroSection = () => {
                 <Link href="/" className="block">Home</Link>
                 <Link href="/Menu" className="block">Menu</Link>
                 <Link href="/Blog" className="block">Blog</Link>
-                <Link href="/Pages" className="block">Pages</Link>
-                <Link href="/About" className="block">About</Link>
+                <Link href="/ShopList" className="block">Pages</Link>
+                <Link href="/AboutUs" className="block">About</Link>
                 <Link href="/ShopList" className="block">Shop</Link>
                 <Link href="/Contact" className="block">Contact</Link>
                 <Searchbar />

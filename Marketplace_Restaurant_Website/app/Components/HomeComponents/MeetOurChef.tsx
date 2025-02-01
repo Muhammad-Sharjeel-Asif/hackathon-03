@@ -64,7 +64,7 @@ const MeetOurChef = () => {
         <div className="mt-12">
           <Link
             href="/Chef"
-            className="bg-transparent border border-[#FF9F0D] text-white py-2 px-4 rounded-full w-[155px] h-[50px]"
+            className="bg-transparent border border-[#FF9F0D] text-white py-4 px-10 rounded-full w-[155px] h-[50px]"
           >
             See More
           </Link>
